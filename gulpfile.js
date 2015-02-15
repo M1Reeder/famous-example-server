@@ -19,7 +19,7 @@ gulp.task('build:famous-core', function() {
 
 gulp.task('build:static-projects', function() {
     return gulp.src('app/public/static-projects/**')
-        .pipe(gulp.dest('build/static-projects/'));
+        .pipe(gulp.dest('build/static-projects'));
 });
 
 gulp.task('build:images', function() {
@@ -45,7 +45,7 @@ gulp.task('watch:server', function() {
         'app/views/*.ejs',
         'app/public/static-projects/**',
         'app/app.js'
-    ], ['start']);
+    ], ['build:public', 'start']);
 });
 
 gulp.task('watch:images', function() {

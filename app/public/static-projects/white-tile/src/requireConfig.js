@@ -4,9 +4,9 @@ require.config({
 
     },
     paths: {
-        famous: '../lib/famous',
-        requirejs: '../lib/requirejs/require',
-        almond: '../lib/almond/almond'
+        famous: '/static-projects/white-tile/lib/famous',
+        requirejs: '/static-projects/white-tile/lib/requirejs/require',
+        almond: '/static-projects/white-tile/lib/almond/almond'
     },
     packages: [
 

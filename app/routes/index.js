@@ -26,6 +26,10 @@ router.get('/university', function(req, res, next) {
 });
 
 router.get('/university/:id', function(req, res, next) {
+    if (req.params.id == 'home') {
+        return res.redirect('/');
+    }
+
     res.render('famous-template', { exampleName: req.params.id});
 });
 

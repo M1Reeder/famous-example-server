@@ -1,16 +1,16 @@
-/* 
+/*
  * Copyright (c) 2014 Gloey Apps
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,7 +18,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
+ *
  * @author: Hein Rutjes (IjzerenHein)
  * @license MIT
  * @copyright Gloey Apps, 2014
@@ -29,9 +29,11 @@
 
 define(function (require, exports, module) {
     'use strict';
-    
+
     // import dependencies
     var Engine = require('famous/core/Engine');
+    var StateModifier = require('famous/modifiers/StateModifier');
+    var Transform = require('famous/core/Transform');
     var AppView = require('./AppView');
 
     // create the main context
@@ -39,5 +41,17 @@ define(function (require, exports, module) {
 
     // your app here
     var appView = new AppView();
+
     mainContext.add(appView);
+
+
+    // // Twisted Sideways
+    //
+    // var modifier = new StateModifier({
+    //     transform: Transform.rotateZ(Math.PI/ 4),
+    //     origin: [0.5, 0.5],
+    //     align: [0.5, 0.2]
+    // });
+    //
+    // mainContext.add(modifier).add(appView);
 });
