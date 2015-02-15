@@ -33,6 +33,11 @@ gulp.task('build:less', function() {
         .pipe(gulp.dest('build/css'));
 });
 
+gulp.task('build:sandbox', function() {
+    return gulp.src('app/public/sandbox/**')
+        .pipe(gulp.dest('build/sandbox'));
+});
+
 gulp.task('uglify:js', function() {
     return gulp.src('app/public/src/*.js')
         .pipe(uglify())
@@ -60,6 +65,10 @@ gulp.task('watch:src', function() {
     gulp.watch('app/public/src/*.js', ['build:src']);
 });
 
+gulp.task('watch:sandbox', function() {
+    gulp.watch('app/public/sandbox/**', ['build:sandbox']);
+});
+
 gulp.task('start', function() {
     server.run({
         file: 'bin/www'
@@ -71,4 +80,4 @@ gulp.task('build:src', ['uglify:js']);
 gulp.task('build:public', ['build:images', 'build:less', 'build:src', 'build:famous-dependencies', 'build:famous-core', 'build:static-projects']);
 gulp.task('watch:public', ['watch:images', 'watch:less', 'watch:src']);
 
-gulp.task('serve', ['build:public', 'watch:server', 'watch:public', 'start']);
+gulp.task('serve', ['build:public', 'build:sandbox', 'watch:server', 'watch:public', 'watch:sandbox', 'start']);

@@ -22,20 +22,24 @@ var centerSpinModifier = new Modifier({
     origin: [0.5, 0.5],
     align: [0.5, 0.5],
     transform : function () {
-        return Transform.rotateY(.003 * (Date.now() - initialTime));
+        return Transform.rotateY(0.003 * (Date.now() - initialTime));
     }
 });
 
 function surfaceContent() {
-    return '<h5>Index</h5><br>' +
-        '<a href="/flappy-bird">Flappy Bird</a>' +
+    return '<h5>Famo.us</h5>' +
+        '<a href="/university">Lessions</a>' +
+        '<br><a href="/timbre">Timbre</a>' +
+        '<br><a href="/slide-show">Camera</a><br><br>' +
+        '<h5>Index</h5>' +
+        '<a href="/sandbox">Sandbox</a>' +
+        '<br><a href="/flappy-bird">Flappy Bird</a>' +
         '<br><a href="/white-tile">White Tile</a>' +
-        '<br><a href="/examples">Examples</a>' +
-        '<br><a href="/university">FSU</a>';
+        '<br><a href="/examples">Examples</a>';
 }
 
 var linkSurface = new Surface({
-    size: [200, 200],
+    size: [200, null],
     content: surfaceContent(),
     properties: {
         backgroundColor: '#fff',

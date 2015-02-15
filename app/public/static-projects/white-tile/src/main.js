@@ -34,24 +34,37 @@ define(function (require, exports, module) {
     var Engine = require('famous/core/Engine');
     var StateModifier = require('famous/modifiers/StateModifier');
     var Transform = require('famous/core/Transform');
+    var Surface = require('famous/core/Surface');
     var AppView = require('./AppView');
 
     // create the main context
     var mainContext = Engine.createContext();
 
-    // your app here
+    mainContext.setPerspective(200);
+
+    var viewSwitchSurface = new Surface({
+        size: [null, null],
+        content: 'Change View',
+        properties: {
+            backgroundColor: 'gray',
+            padding: '10px',
+            zIndex: 5
+        }
+    });
+
+    var rotateModifier = new StateModifier();
     var appView = new AppView();
 
-    mainContext.add(appView);
+    viewSwitchSurface.on('click', function() {
+        rotateModifier.setOrigin([0.5, 3.5]);
+        rotateModifier.setAlign([0.5, 1]);
+        rotateModifier.setTransform(
+            Transform.rotate(Math.PI/4, 0, 0),
+            {duration: 2000, curve: 'linear'}
+        );
+    });
 
+    mainContext.add(viewSwitchSurface);
+    mainContext.add(rotateModifier).add(appView);
 
-    // // Twisted Sideways
-    //
-    // var modifier = new StateModifier({
-    //     transform: Transform.rotateZ(Math.PI/ 4),
-    //     origin: [0.5, 0.5],
-    //     align: [0.5, 0.2]
-    // });
-    //
-    // mainContext.add(modifier).add(appView);
 });
