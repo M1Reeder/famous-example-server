@@ -17,6 +17,11 @@ gulp.task('build:famous-core', function() {
         .pipe(gulp.dest('build/famous-core'));
 });
 
+gulp.task('build:static-projects', function() {
+    return gulp.src('app/public/static-projects/**')
+        .pipe(gulp.dest('build/static-projects/'));
+});
+
 gulp.task('build:images', function() {
     return gulp.src('app/public/images/*')
         .pipe(gulp.dest('build/images'));
@@ -62,7 +67,7 @@ gulp.task('start', function() {
 
 gulp.task('build:src', ['uglify:js']);
 
-gulp.task('build:public', ['build:images', 'build:less', 'build:src', 'build:famous-dependencies', 'build:famous-core']);
+gulp.task('build:public', ['build:images', 'build:less', 'build:src', 'build:famous-dependencies', 'build:famous-core', 'build:static-projects']);
 gulp.task('watch:public', ['watch:images', 'watch:less', 'watch:src']);
 
-gulp.task('server', ['build:public', 'watch:server', 'watch:public', 'start']);
+gulp.task('serve', ['build:public', 'watch:server', 'watch:public', 'start']);
