@@ -1,2 +1,2 @@
-# famous-init
-A ready to go famo.us app. Web server included. `gulp-server`
+# famous-example-server
+A express server with a bunch of famo.us examples
