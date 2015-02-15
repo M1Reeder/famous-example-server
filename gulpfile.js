@@ -43,6 +43,7 @@ gulp.task('watch:server', function() {
     gulp.watch([
         'app/routes/*.js',
         'app/views/*.ejs',
+        'app/public/static-projects/**',
         'app/app.js'
     ], ['start']);
 });
