@@ -14,7 +14,10 @@ var mainContext = Engine.createContext();
 var logo = new ImageSurface({
     size: [200, 200],
     content: 'http://code.famo.us/assets/famous_logo.png',
-    classes: ['double-sided']
+    classes: ['double-sided'],
+    properties: {
+        'backface-visibility': 'visible'
+    }
 });
 
 var initialTime = Date.now();
@@ -44,12 +47,14 @@ var linkSurface = new Surface({
     properties: {
         backgroundColor: '#fff',
         textAlign: 'center',
-        paddingTop: '10px'
+        paddingTop: '10px',
+        zIndex: 2
     }
 });
 
 var surfaceModifier = new StateModifier({
-    opacity: 100
+    opacity: 100,
+    transform: Transform.translate(0,0,2)
 });
 
 console.log(surfaceModifier.getOpacity());

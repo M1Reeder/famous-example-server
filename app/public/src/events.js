@@ -100,6 +100,8 @@ surfaceA.on('click', function() {
 
 eventHandlerA.pipe(eventHandlerB);
 
+eventHandlerB.subscribe(eventHandlerA);
+
 // or
 // eventHandlerB.subscribe(eventHandlerA);
 

@@ -6,6 +6,7 @@ var mainContext = Engine.createContext();
 var Easing = famous.transitions.Easing;
 var SpringTransition = famous.transitions.SpringTransition;
 var MouseSync = famous.inputs.MouseSync;
+var Modifier = famous.core.Modifier;
 
 var mainContext = Engine.createContext();
 
@@ -81,19 +82,21 @@ function createBird(position) {
         }
     });
 
-    var birdModifier = new StateModifier({
-        transform: Transform.skewX(0),
+    var birdModifier = new Modifier({
         origin: [0.5, 0.5],
         align: position
     });
 
-
     mainContext.add(birdModifier).add(bird);
 
-    birdModifier.setAlign(
-      [1, position[1]],
-      { duration : 1000, curve: 'linear' }
-    );
+
+    var angle = 0;
+    function rotate() {
+        angle += 0.01;
+        return Transform.rotateZ(angle);
+    }
+
+    birdModifier.transformFrom(rotate);
 
     return birdModifier;
 }

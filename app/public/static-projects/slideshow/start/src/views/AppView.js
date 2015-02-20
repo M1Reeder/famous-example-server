@@ -8,19 +8,24 @@ define(function(require, exports, module) {
 
     var SlideshowView = require('views/SlideshowView');
 
+    AppView.DEFAULT_OPTION = {
+        size: [450, 500],
+        data: undefined,
+        lightboxOpts: {}
+    };
+
     function AppView() {
         View.apply(this, arguments);
+        var slideshowView = new SlideshowView({
+            data: this.options.data
+        });
 
-        var slideshowView = new SlideshowView();
-        
         // Add slideshowView to render tree
         this.add(slideshowView);
     }
 
     AppView.prototype = Object.create(View.prototype);
     AppView.prototype.constructor = AppView;
-
-    AppView.DEFAULT_OPTIONS = {};
 
     module.exports = AppView;
 });
